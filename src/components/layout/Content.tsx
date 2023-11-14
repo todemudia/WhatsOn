@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Content: FC<Props> = ({ children }) => {
-  return <main className="container mx-auto my-4 flex-grow">{children}</main>;
+  return <main className=" mx-8 my-8 flex-grow">{children}</main>;
 };
 
 export default Content;

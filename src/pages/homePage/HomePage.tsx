@@ -1,12 +1,29 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { getUser } from '../../api/movieApi';
+import MoviesPayload, {
+  Results
+} from '../../interfaces/MoviesPayload.interface';
+import CardList from '../../components/cardList';
 
 const HomePage: FC = () => {
+  const [data, setData] = useState<Results[]>();
+
   useEffect(() => {
-    console.log(getUser());
+    getUser()
+      .then((res: MoviesPayload) => {
+        setData(res.results);
+        console.log(res.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  return <>Movie List here!</>;
+  return (
+    <div>
+      <CardList cards={data ?? []} />
+    </div>
+  );
 };
 
 export default HomePage;
