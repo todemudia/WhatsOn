@@ -1,11 +1,19 @@
-import { useEffect } from 'react';
-import { getUser } from './api/movieApi';
+import { FC } from 'react';
+import Header from './components/layout/Header';
+import Content from './components/layout/Content';
+import Footer from './components/layout/Footer';
+import HomePage from './pages/homePage';
 
-const App = () => {
-  useEffect(() => {
-    getUser();
-  }, []);
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+const App: FC = () => {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <Content>
+        <HomePage />
+      </Content>
+      <Footer />
+    </div>
+  );
 };
 
 export default App;
