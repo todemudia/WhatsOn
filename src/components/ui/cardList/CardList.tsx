@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Card from '../card';
-import { Results } from '../../interfaces/MoviesPayload.interface';
+import { Results } from '../../../interfaces/MoviesPayload.interface';
 
 interface Props {
   cards: Results[];
