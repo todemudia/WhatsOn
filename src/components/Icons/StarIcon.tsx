@@ -1,7 +1,7 @@
 import { IconProps } from '../ui/Icon/types';
 import Icon from '../ui/Icon';
 
-export default function Star(props: IconProps) {
+export default function StarIcon(props: IconProps) {
   return (
     <Icon viewBox="0 0 20 20" {...props}>
       <path

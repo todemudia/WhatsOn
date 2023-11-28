@@ -3,7 +3,16 @@ import { getUser } from '../../api/movieApi';
 import MoviesPayload, {
   Results
 } from '../../interfaces/MoviesPayload.interface';
-import CardList from '../../components/ui/cardList';
+import RowList from '../../components/ui/rowList';
+import styled from '@emotion/styled';
+import Layout from '../../components/layout';
+
+const StyledDiv = styled.div`
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+`;
 
 const HomePage: FC = () => {
   const [data, setData] = useState<Results[]>();
@@ -12,7 +21,6 @@ const HomePage: FC = () => {
     getUser()
       .then((res: MoviesPayload) => {
         setData(res.results);
-        console.log(res);
       })
       .catch((error) => {
         console.error(error);
@@ -20,9 +28,13 @@ const HomePage: FC = () => {
   }, []);
 
   return (
-    <div>
-      <CardList cards={data ?? []} />
-    </div>
+    <Layout>
+      <StyledDiv>
+        <RowList cards={data ?? []} title={'Now Playing'} />
+        <RowList cards={data ?? []} title={'Most Popular'} />
+        <RowList cards={data ?? []} title={'Trending'} />
+      </StyledDiv>
+    </Layout>
   );
 };
 

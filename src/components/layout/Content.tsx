@@ -1,11 +1,17 @@
 import { FC, ReactNode } from 'react';
+import styled from '@emotion/styled';
+
+const StyledMain = styled.main`
+  margin: 8px;
+  flex: 1;
+`;
 
 interface Props {
   children: ReactNode;
 }
 
 const Content: FC<Props> = ({ children }) => {
-  return <main className=" mx-8 my-8 flex-grow">{children}</main>;
+  return <StyledMain>{children}</StyledMain>;
 };
 
 export default Content;
