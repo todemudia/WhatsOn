@@ -4,10 +4,10 @@ import { css } from '@emotion/css';
 import MovieIcon from '../Icons/MovieIcon';
 import { useNavigate } from 'react-router-dom';
 import ToggleButton from '../ui/toggleButton/ToggleButton';
-import { useTheme } from '../../context/ThemeContext';
+import { Theme, useDarkMode } from '../../context/DarkModeContext';
 
-const StyledHeader = styled.header`
-  background-color: #333;
+const StyledHeader = styled.header<{ theme: Theme }>`
+  background-color: ${(props) => props.theme.color.foreground};
   color: white;
   text-align: center;
   display: flex;
@@ -23,7 +23,7 @@ const NameAndLogo = styled.div`
   user-select: none;
 
   &:active {
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
 `;
 
@@ -39,16 +39,16 @@ const StyledIcon = css`
 `;
 
 const Header: FC = () => {
-  const { toggleTheme } = useTheme();
-
+  const { toggleDarkMode, theme } = useDarkMode();
   const navigate = useNavigate();
+
   return (
-    <StyledHeader>
+    <StyledHeader theme={theme}>
       <NameAndLogo onClick={() => navigate('/')}>
         <MovieIcon className={StyledIcon} />
         <StyledTitle>WatchOn</StyledTitle>
       </NameAndLogo>
-      <ToggleButton onToggle={() => toggleTheme()} />
+      <ToggleButton onToggle={() => toggleDarkMode()} />
     </StyledHeader>
   );
 };

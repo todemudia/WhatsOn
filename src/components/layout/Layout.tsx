@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 const StyledLayout = styled.div`
   margin: 0;

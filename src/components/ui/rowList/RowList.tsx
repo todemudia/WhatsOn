@@ -11,9 +11,14 @@ const Container = styled.div`
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 16px;
   flex-wrap: nowrap;
   overflow: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 const StyledH1 = styled.h1`
@@ -33,6 +38,17 @@ const RowList: FC<Props> = (props) => {
           <Card key={card.id} {...card} />
         ))}
       </StyledDiv>
+      <div
+        css={{ display: 'flex', flexDirection: 'row', justifyContent: 'right' }}
+      >
+        {/* Add styling for */}
+        <button
+          css={{ margin: '8px' }}
+          onClick={() => console.log('View all Clicked!')}
+        >
+          View all
+        </button>
+      </div>
     </Container>
   );
 };
