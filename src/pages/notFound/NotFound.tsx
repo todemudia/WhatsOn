@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { FC } from 'react';
-import styled from '@emotion/styled';
 import Layout from '../../components/layout';
+import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   display: flex;

@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/css';
+import styled from 'styled-components';
 import MovieIcon from '../Icons/MovieIcon';
 import { useNavigate } from 'react-router-dom';
 import ToggleButton from '../ui/toggleButton/ToggleButton';
@@ -32,7 +31,7 @@ const StyledTitle = styled.h1`
   margin-left: 0px;
 `;
 
-const StyledIcon = css`
+const StyledIcon = styled.image`
   margin: 8px;
   height: 30px;
   width: 20px;

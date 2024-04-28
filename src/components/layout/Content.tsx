@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 const StyledMain = styled.main`
   margin: 8px;

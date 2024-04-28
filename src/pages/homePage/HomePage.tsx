@@ -7,8 +7,8 @@ import {
 } from '../../api/movieApi';
 import { Results } from '../../interfaces/MoviesPayload.interface';
 import RowList from '../../components/ui/rowList';
-import styled from '@emotion/styled';
 import Layout from '../../components/layout';
+import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   margin: 8px;

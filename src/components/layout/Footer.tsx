@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { Theme, useDarkMode } from '../../context/DarkModeContext';
 
 const StyledFooter = styled.footer<{ theme: Theme }>`

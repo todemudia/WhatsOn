@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Card from '../card';
 import { Results } from '../../../interfaces/MoviesPayload.interface';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 const Container = styled.div`
   margin: 8px;
@@ -25,6 +25,16 @@ const StyledH1 = styled.h1`
   margin: 8px;
 `;
 
+const LeftContainer = styled.div`
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'right'
+`;
+
+const Button = styled.button`
+  margin: '8px';
+`;
+
 interface Props {
   title?: string;
   cards: Results[];
@@ -38,17 +48,12 @@ const RowList: FC<Props> = (props) => {
           <Card key={card.id} {...card} />
         ))}
       </StyledDiv>
-      <div
-        css={{ display: 'flex', flexDirection: 'row', justifyContent: 'right' }}
-      >
+      <LeftContainer>
         {/* Add styling for */}
-        <button
-          css={{ margin: '8px' }}
-          onClick={() => console.log('View all Clicked!')}
-        >
+        <Button onClick={() => console.log('View all Clicked!')}>
           View all
-        </button>
-      </div>
+        </Button>
+      </LeftContainer>
     </Container>
   );
 };
