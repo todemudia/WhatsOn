@@ -1,19 +1,33 @@
-import { FC } from 'react';
+import { FC, useRef, useState } from 'react';
 import Card from '../card';
-import { Results } from '../../../interfaces/MoviesPayload.interface';
 import styled from 'styled-components';
+import { Props } from './types';
+import { Results } from '../../../interfaces/MoviesPayload.interface';
 
 const Container = styled.div`
-  margin: 8px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
 `;
 
-const StyledDiv = styled.div`
+const StyledH1 = styled.h1`
+  margin: 8px;
+`;
+
+const Content = styled.div`
+  width: 98vw;
   display: flex;
-  flex-direction: row;
+  align-items: center;
   gap: 16px;
-  flex-wrap: nowrap;
-  overflow: auto;
+`;
+
+const ScrollContainer = styled.div`
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+
   ::-webkit-scrollbar {
     display: none;
   }
@@ -21,39 +35,69 @@ const StyledDiv = styled.div`
   scrollbar-width: none;
 `;
 
-const StyledH1 = styled.h1`
-  margin: 8px;
+const InnerContainer = styled.div`
+  width: 100%;
+  display: flex;
+  position: relative;
 `;
 
-const LeftContainer = styled.div`
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'right'
+const FloatingButton = styled.button<{ left?: boolean; right?: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 0.5rem;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  z-index: 1;
+
+  ${({ left }) => left && `left: 0;`}
+  ${({ right }) => right && `right: 0;`}
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
 `;
 
-const Button = styled.button`
-  margin: '8px';
-`;
-
-interface Props {
-  title?: string;
-  cards: Results[];
-}
 const RowList: FC<Props> = (props) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = (scrollAmount: number) => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <Container>
-      {props.title && <StyledH1>{props.title}</StyledH1>}
-      <StyledDiv>
-        {props.cards.map((card: Results) => (
-          <Card key={card.id} {...card} />
-        ))}
-      </StyledDiv>
-      <LeftContainer>
-        {/* Add styling for */}
-        <Button onClick={() => console.log('View all Clicked!')}>
-          View all
-        </Button>
-      </LeftContainer>
+      {props.title && (
+        <StyledH1 onClick={() => console.log('View all Clicked!')}>
+          {props.title}
+        </StyledH1>
+      )}
+      <InnerContainer>
+        <FloatingButton left onClick={() => handleScroll(-1000)}>
+          {'<'}
+        </FloatingButton>
+        <ScrollContainer ref={containerRef}>
+          <Content>
+            {props.cards.map((card: Results) => (
+              <Card key={card.id} {...card} />
+            ))}
+          </Content>
+        </ScrollContainer>
+        <FloatingButton right onClick={() => handleScroll(1000)}>
+          {'>'}
+        </FloatingButton>
+      </InnerContainer>
     </Container>
   );
 };

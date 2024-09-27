@@ -31,7 +31,7 @@ const StyledTitle = styled.h1`
   margin-left: 0px;
 `;
 
-const StyledIcon = styled.image`
+const StyledMovieIcon = styled(MovieIcon)`
   margin: 8px;
   height: 30px;
   width: 20px;
@@ -44,8 +44,8 @@ const Header: FC = () => {
   return (
     <StyledHeader theme={theme}>
       <NameAndLogo onClick={() => navigate('/')}>
-        <MovieIcon className={StyledIcon} />
-        <StyledTitle>WatchOn</StyledTitle>
+        <StyledMovieIcon />
+        <StyledTitle>WhatsOn</StyledTitle>
       </NameAndLogo>
       <ToggleButton onToggle={() => toggleDarkMode()} />
     </StyledHeader>

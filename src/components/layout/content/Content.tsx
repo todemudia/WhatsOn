@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledMain = styled.main`
   margin: 8px;
-  flex: 1;
 `;
 
 interface Props {
