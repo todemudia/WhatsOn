@@ -42,17 +42,19 @@ const InnerContainer = styled.div`
 `;
 
 const FloatingButton = styled.button<{ left?: boolean; right?: boolean }>`
+  height: 50%;
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
-  padding: 0.5rem;
+  padding: 1rem;
   border: none;
   color: white;
   font-size: 2rem;
   cursor: pointer;
   position: absolute;
-  top: 50%; /* Center vertically */
+  top: 50%;
   transform: translateY(-50%);
   z-index: 1;
 
@@ -60,7 +62,7 @@ const FloatingButton = styled.button<{ left?: boolean; right?: boolean }>`
   ${({ right }) => right && `right: 0;`}
 
   &:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.6);
   }
 `;
 
