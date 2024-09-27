@@ -1,15 +1,15 @@
 const lightTheme = {
-  primary: '#007bff',
-  background: '#fff',
+  primary: '#007BFF',
+  background: '#F5F5F5',
   foreground: '#ECD06F',
-  text: '#333'
+  text: '#333333'
 };
 
 const darkTheme = {
   primary: '#e34234',
-  background: '#000',
+  background: '#121212',
   foreground: '#232D3F',
-  text: '#fff'
+  text: '#FFFFFF'
 };
 
 const defaultTheme = {

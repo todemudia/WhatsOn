@@ -3,8 +3,10 @@ import Header from './header/Header';
 import Content from './content/Content';
 import Footer from './footer/Footer';
 import styled from 'styled-components';
+import { useDarkMode } from '../../context/DarkModeContext';
 
 const StyledLayout = styled.div`
+  background-color: ${(props) => props.theme.color.background};
   margin: 0;
   padding: 0;
   display: flex;
@@ -17,8 +19,10 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ children }) => {
+  const { theme } = useDarkMode();
+
   return (
-    <StyledLayout>
+    <StyledLayout theme={theme}>
       <Header />
       <Content>{children}</Content>
       <Footer />

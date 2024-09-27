@@ -1,8 +1,9 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useRef } from 'react';
 import Card from '../card';
 import styled from 'styled-components';
 import { Props } from './types';
 import { Results } from '../../../interfaces/MoviesPayload.interface';
+import { useDarkMode } from '../../../context/DarkModeContext';
 
 const Container = styled.div`
   width: 100%;
@@ -13,6 +14,7 @@ const Container = styled.div`
 `;
 
 const StyledH1 = styled.h1`
+  color: ${(props) => props.theme.color.text};
   margin: 8px;
 `;
 
@@ -39,16 +41,21 @@ const InnerContainer = styled.div`
   width: 100%;
   display: flex;
   position: relative;
+
+  &:hover .floating-button {
+    opacity: 1;
+  }
 `;
 
 const FloatingButton = styled.button<{ left?: boolean; right?: boolean }>`
-  height: 50%;
-  border-radius: 1rem;
   display: flex;
+  opacity: 0;
   align-items: center;
   justify-content: center;
   background: transparent;
   padding: 1rem;
+  height: 50%;
+  border-radius: 1rem;
   border: none;
   color: white;
   font-size: 2rem;
@@ -68,6 +75,7 @@ const FloatingButton = styled.button<{ left?: boolean; right?: boolean }>`
 
 const RowList: FC<Props> = (props) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { theme } = useDarkMode();
 
   const handleScroll = (scrollAmount: number) => {
     if (containerRef.current) {
@@ -80,23 +88,35 @@ const RowList: FC<Props> = (props) => {
 
   return (
     <Container>
-      {props.title && (
-        <StyledH1 onClick={() => console.log('View all Clicked!')}>
+      {props.cards.length > 0 && props.title && (
+        <StyledH1
+          theme={theme}
+          onClick={() => console.log('View all Clicked!')}
+        >
           {props.title}
         </StyledH1>
       )}
       <InnerContainer>
-        <FloatingButton left onClick={() => handleScroll(-1000)}>
+        <FloatingButton
+          left
+          onClick={() => handleScroll(-1000)}
+          className="floating-button"
+        >
           {'<'}
         </FloatingButton>
         <ScrollContainer ref={containerRef}>
           <Content>
-            {props.cards.map((card: Results) => (
-              <Card key={card.id} {...card} />
-            ))}
+            {props.cards &&
+              props.cards.map((card: Results) => (
+                <Card key={card.id} {...card} />
+              ))}
           </Content>
         </ScrollContainer>
-        <FloatingButton right onClick={() => handleScroll(1000)}>
+        <FloatingButton
+          right
+          onClick={() => handleScroll(1000)}
+          className="floating-button"
+        >
           {'>'}
         </FloatingButton>
       </InnerContainer>

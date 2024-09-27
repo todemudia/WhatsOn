@@ -2,7 +2,8 @@ import { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 
 const StyledMain = styled.main`
-  margin: 8px;
+  padding: 8px;
+  background: transparent;
 `;
 
 interface Props {
