@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
-import Header from './Header';
-import Content from './Content';
-import Footer from './Footer';
+import Header from './header/Header';
+import Content from './content/Content';
+import Footer from './footer/Footer';
 import styled from 'styled-components';
 
 const StyledLayout = styled.div`

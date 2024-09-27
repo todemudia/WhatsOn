@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import MovieIcon from '../Icons/MovieIcon';
+import MovieIcon from '../../Icons/MovieIcon';
 import { useNavigate } from 'react-router-dom';
-import ToggleButton from '../ui/toggleButton/ToggleButton';
-import { Theme, useDarkMode } from '../../context/DarkModeContext';
+import ToggleButton from '../../ui/toggleButton/ToggleButton';
+import { Theme, useDarkMode } from '../../../context/DarkModeContext';
 
 const StyledHeader = styled.header<{ theme: Theme }>`
   background-color: ${(props) => props.theme.color.foreground};

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { Theme, useDarkMode } from '../../context/DarkModeContext';
+import { Theme, useDarkMode } from '../../../context/DarkModeContext';
 
 const StyledFooter = styled.footer<{ theme: Theme }>`
   background-color: ${(props) => props.theme.color.foreground};
