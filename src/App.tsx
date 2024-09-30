@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import HomePage from './pages/homePage';
-import { Route, Routes } from 'react-router-dom';
 import NotFound from './pages/notFound';
+import Movie from './pages/movie';
+import { Route, Routes } from 'react-router-dom';
 import { DarkModeProvider } from './context/DarkModeContext';
 
 const App: FC = () => {
@@ -9,6 +10,7 @@ const App: FC = () => {
     <DarkModeProvider>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/movie/:movieId" element={<Movie />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </DarkModeProvider>

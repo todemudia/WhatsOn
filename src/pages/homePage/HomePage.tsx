@@ -5,7 +5,7 @@ import {
   getTopRated,
   getUpcoming
 } from '../../api/movieApi';
-import { Results } from '../../interfaces/MoviesPayload.interface';
+import { MovieList } from '../../interfaces/MovieListResponse.interface';
 import RowList from '../../components/ui/rowList';
 import Layout from '../../components/layout';
 import styled from 'styled-components';
@@ -18,10 +18,10 @@ const StyledDiv = styled.div`
 `;
 
 const HomePage: FC = () => {
-  const [nowPlayingList, setNowPlayingList] = useState<Results[]>();
-  const [popularList, setPopularList] = useState<Results[]>();
-  const [topRatedList, setTopRatedList] = useState<Results[]>();
-  const [upcomingList, setUpcomingList] = useState<Results[]>();
+  const [nowPlayingList, setNowPlayingList] = useState<MovieList[]>();
+  const [popularList, setPopularList] = useState<MovieList[]>();
+  const [topRatedList, setTopRatedList] = useState<MovieList[]>();
+  const [upcomingList, setUpcomingList] = useState<MovieList[]>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +43,7 @@ const HomePage: FC = () => {
         setTopRatedList(topRatedResponse.results);
         setUpcomingList(upcomingResponse.results);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching movie data', error);
       }
     };
 

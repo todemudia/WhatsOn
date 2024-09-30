@@ -1,4 +1,4 @@
-import { Results } from '../../../interfaces/MoviesPayload.interface';
+import { Results } from '../../../interfaces/MovieListResponse.interface';
 
 export interface Props {
   title?: string;

@@ -1,12 +1,12 @@
-interface MoviesPayload {
-  dates: { maximum: string; minimum: string };
+export interface MovieListResponse {
+  dates?: { maximum: string; minimum: string };
   page: number;
-  results: Results[];
+  results: MovieList[];
   total_pages: number;
   total_results: number;
 }
 
-export interface Results {
+export interface MovieList {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -22,5 +22,3 @@ export interface Results {
   vote_average: number;
   vote_count: number;
 }
-
-export default MoviesPayload;
